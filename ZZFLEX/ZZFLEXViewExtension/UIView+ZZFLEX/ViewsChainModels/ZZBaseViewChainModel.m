@@ -9,8 +9,9 @@
 #import "ZZBaseViewChainModel.h"
 #import "UIView+ZZFrame.h"
 #import <Masonry/Masonry.h>
-
-#define     ZZFLEX_CHAIN_VIEW_IMPLEMENTATION(methodName, ZZParamType)      ZZFLEX_CHAIN_IMPLEMENTATION(methodName, ZZParamType, id, UIView)
+#import "UIView+WZVFL.h"
+@class WZVFLParseItem;
+#define     ZZFLEX_CHAIN_VIEW_IMPLEMENTATION(methodName, ZZParamType)      ZZFLEX_CHAIN_IMPLEMENTATION(methodName, ZZParamType, __kindof ZZBaseViewChainModel *, UIView)
 
 #define     ZZFLEX_CHAIN_MASONRY_IMPLEMENTATION(methodName, masonryMethod) \
 - (id (^)( void (^constraints)(__kindof UIView *, MASConstraintMaker *)) )methodName    \
@@ -146,6 +147,17 @@ ZZFLEX_CHAIN_LAYER_IMPLEMENTATION(shadowRadius, CGFloat);
 
 
 ZZFLEX_CHAIN_LAYER_IMPLEMENTATION(transform, CATransform3D);
+
+
+- (__kindof ZZBaseViewChainModel * (^)( void (^content)(__kindof UIView *)) )addSubView {
+    return ^__kindof ZZBaseViewChainModel *( void (^content)(__kindof UIView *) ) {
+        content(self.view);
+        return self;
+    };
+}
+
+ZZFLEX_CHAIN_VIEW_IMPLEMENTATION(vfl, WZVFLParseItem *);
+
 
 @end
 

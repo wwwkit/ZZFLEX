@@ -61,4 +61,6 @@ ZZFLEX_VIEW_CHAIN_TYPE ZZTableViewChainModel *(^ addTableView)(NSInteger tag);
 /// 添加CollectionView
 ZZFLEX_VIEW_CHAIN_TYPE ZZCollectionViewChainModel *(^ addCollectionView)(NSInteger tag);
 
+ZZFLEX_CHAIN_PROPERTY ZZViewChainModel * (^ addSubView)( void(^content)(__kindof UIView *view) );
+
 @end

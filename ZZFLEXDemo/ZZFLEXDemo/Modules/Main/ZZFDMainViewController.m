@@ -20,7 +20,7 @@
 #import "ZZFDAlbumViewController.h"
 #import "WXSettingViewController.h"
 #import "WXContactsViewController.h"
-
+#import "WZViewExtensionTestController.h"
 #define     FDMAIN_FONT_SIZE_DETAIL         14
 #define     ClassMenuHeaderCell             [ZZFDMainSectionTitleView class]
 #define     ClassMenuCell                   [ZZFDMainMenuCell class]
@@ -35,6 +35,7 @@ typedef NS_ENUM(NSInteger, ZZFDMainSectionType) {
     ZZFDMainSectionTypeAgent,               // ZZFLEXAgent
     ZZFDMainSectionTypeEdit,                // 编辑类页面处理Demo
     ZZFDMainSectionTypeRQ,                  // ZZFLEX事件响应队列
+    ZZFDMainSectionTypeTest,                  // ZZFLEX view Test
     ZZFDMainSectionTypeHeaderSpace,
 };
 
@@ -225,6 +226,19 @@ void __zz_attr_string_bold(NSMutableAttributedString *attrStr, NSString *text) {
         self.addCell(ClassMenuCell).withDataModel(@"多接口页面 Demo").toSection(sectionTag).selectedAction(^(id model){
             @strongify(self);
             ZZFDRquestQueueViewController *vc = [[ZZFDRquestQueueViewController alloc] init];
+            PushVC(vc);
+        });
+    }
+    
+    {
+        NSInteger sectionTag = ZZFDMainSectionTypeTest;
+        self.addSection(sectionTag).sectionInsets(UIEdgeInsetsMake(0, 15, 20, 15));
+        NSMutableAttributedString *attrTitle = __zz_create_introduce(@"UIView 扩展测试", @"");
+        __zz_attr_string_bold(attrTitle, @"UIView");
+        self.setHeader(ClassMenuHeaderCell).toSection(sectionTag).withDataModel(attrTitle);
+        self.addCell(ClassMenuCell).withDataModel(@"UIView test Demo").toSection(sectionTag).selectedAction(^(id model){
+            @strongify(self);
+            WZViewExtensionTestController *vc = [[WZViewExtensionTestController alloc] init];
             PushVC(vc);
         });
     }

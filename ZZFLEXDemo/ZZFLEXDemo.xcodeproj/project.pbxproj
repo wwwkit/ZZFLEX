@@ -104,6 +104,7 @@
 		C2F2F9892018A509003D53F7 /* ZZFDRQSuccessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F2F9882018A509003D53F7 /* ZZFDRQSuccessCell.m */; };
 		C2F2F98D2018A53C003D53F7 /* ZZFDRQRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F2F98C2018A53C003D53F7 /* ZZFDRQRequest.m */; };
 		C4CA8820EC31BF20D47A333A /* libPods-ZZFLEXDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3B3E00F40C25E980C181EA /* libPods-ZZFLEXDemo.a */; };
+		FCCFDE9024AC6DBE008AB73F /* WZViewExtensionTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCFDE8F24AC6DBE008AB73F /* WZViewExtensionTestController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -291,6 +292,8 @@
 		C2F2F9882018A509003D53F7 /* ZZFDRQSuccessCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZFDRQSuccessCell.m; sourceTree = "<group>"; };
 		C2F2F98B2018A53C003D53F7 /* ZZFDRQRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZFDRQRequest.h; sourceTree = "<group>"; };
 		C2F2F98C2018A53C003D53F7 /* ZZFDRQRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZFDRQRequest.m; sourceTree = "<group>"; };
+		FCCFDE8E24AC6DBE008AB73F /* WZViewExtensionTestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WZViewExtensionTestController.h; sourceTree = "<group>"; };
+		FCCFDE8F24AC6DBE008AB73F /* WZViewExtensionTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WZViewExtensionTestController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -654,6 +657,7 @@
 		C2863A8B1FCCFB76008BC3C0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FCCFDE8D24AC6D75008AB73F /* Test */,
 				C22212D224235D3C00FA0B32 /* WXContacts(VC) */,
 				C2F21C472241E1CE00841F4C /* Album */,
 				C27E9F6F1FCE63A20062C896 /* Common */,
@@ -991,6 +995,15 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		FCCFDE8D24AC6D75008AB73F /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				FCCFDE8E24AC6DBE008AB73F /* WZViewExtensionTestController.h */,
+				FCCFDE8F24AC6DBE008AB73F /* WZViewExtensionTestController.m */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1159,6 +1172,7 @@
 				C2F2F96920188FEF003D53F7 /* TLUserGroup.m in Sources */,
 				C2863A931FCCFB76008BC3C0 /* main.m in Sources */,
 				C282D0B61FEA0E0A00559705 /* ZZFDGoodSectionTitleCell.m in Sources */,
+				FCCFDE9024AC6DBE008AB73F /* WZViewExtensionTestController.m in Sources */,
 				C27E9F681FCE615F0062C896 /* TLMenuItemCell.m in Sources */,
 				C2DA6B642019C667005A747A /* ZZFDRQTitleCell.m in Sources */,
 				C282D0AE1FEA0C0700559705 /* ZZFDGoodReadCell.m in Sources */,

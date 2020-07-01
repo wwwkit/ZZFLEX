@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class WZVFLParseItem;
 
 /// 链式API声明
 #define     ZZFLEX_CHAIN_PROPERTY               @property (nonatomic, copy, readonly)
@@ -110,5 +111,9 @@ ZZFLEX_CHAIN_PROPERTY ObjcType (^ shadowOffset)(CGSize shadowOffset);
 ZZFLEX_CHAIN_PROPERTY ObjcType (^ shadowRadius)(CGFloat shadowRadius);
 
 ZZFLEX_CHAIN_PROPERTY ObjcType (^ transform)(CATransform3D transform);
+
+ZZFLEX_CHAIN_PROPERTY ObjcType (^ addSubView)(void(^content)(__kindof UIView *view));
+/// 使用此方法， 所有用到的view 必须有不同的tag 防止出错
+ZZFLEX_CHAIN_PROPERTY ObjcType (^ vfl)(WZVFLParseItem *item);
 
 @end

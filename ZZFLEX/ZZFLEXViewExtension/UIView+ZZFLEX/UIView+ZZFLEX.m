@@ -37,4 +37,12 @@ ZZFLEX_VE_API(addTextView, ZZTextViewChainModel, UITextView);
 ZZFLEX_VE_API(addTableView, ZZTableViewChainModel, UITableView);
 ZZFLEX_VE_API(addCollectionView, ZZCollectionViewChainModel, UICollectionView);
 
+
+- (ZZViewChainModel * (^)( void (^content)(__kindof UIView *)) )addSubView {
+    return ^ZZViewChainModel * ( void (^content)(__kindof UIView *) ) {
+        ZZViewChainModel *chainModel = [[ZZViewChainModel alloc] initWithTag:self.tag andView:self];
+        content(self);
+        return chainModel;
+    };
+}
 @end

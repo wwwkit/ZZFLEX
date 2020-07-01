@@ -12,5 +12,6 @@
 
 #import "UIView+ZZSeparator.h"
 #import "UIView+ZZCornor.h"
+#import "UIView+WZVFL.h"
 
 #endif /* ZZFLEXViewExtension_h */
