@@ -99,6 +99,7 @@ PODS:
 DEPENDENCIES:
   - Masonry (~> 1.1.0)
   - MJRefresh (~> 3.1.15)
+  - SDWebImage
   - TLKit (from `https://github.com/tbl00c/TLKit.git`)
   - "XLPhotoBrowser+CoderXL (from `https://github.com/tbl00c/XLPhotoBrowser.git`, tag `1.2.1`)"
   - ZZFLEX (from `../`)
@@ -136,6 +137,6 @@ SPEC CHECKSUMS:
   "XLPhotoBrowser+CoderXL": 48f73020942c73ba3c3f44c46f7f2add86a98d00
   ZZFLEX: 46a7bf6feb0130a2ce265ac72c83991d871cfaee
 
-PODFILE CHECKSUM: a495a4e7f2f45601d65cc4756ca1ab2332f51c7e
+PODFILE CHECKSUM: 2ae4f726740aadbb69ebe8eb9a35bb7b85651240
 
-COCOAPODS: 1.9.2
+COCOAPODS: 1.9.3

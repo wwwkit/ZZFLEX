@@ -21,6 +21,7 @@
 #import "ZZTextViewChainModel.h"
 #import "ZZTableViewChainModel.h"
 #import "ZZCollectionViewChainModel.h"
+#import "WZObserver.h"
 
 #define     ZZFLEX_VIEW_CHAIN_TYPE              @property (nonatomic, copy, readonly)
 

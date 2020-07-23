@@ -10,6 +10,7 @@
 #import "UIView+ZZFrame.h"
 #import <Masonry/Masonry.h>
 #import "UIView+WZVFL.h"
+#import "WZObserver.h"
 @class WZVFLParseItem;
 #define     ZZFLEX_CHAIN_VIEW_IMPLEMENTATION(methodName, ZZParamType)      ZZFLEX_CHAIN_IMPLEMENTATION(methodName, ZZParamType, __kindof ZZBaseViewChainModel *, UIView)
 
@@ -157,6 +158,14 @@ ZZFLEX_CHAIN_LAYER_IMPLEMENTATION(transform, CATransform3D);
 }
 
 ZZFLEX_CHAIN_VIEW_IMPLEMENTATION(vfl, WZVFLParseItem *);
+
+- (id (^)(id data, NSString *keyPath, NSString *toPath))bindData
+{
+    return ^__kindof ZZBaseViewChainModel *(id data, NSString *keyPath, NSString *toPath) {
+        [self.view.Observer bindDataWithModel:data bindKeyPath:keyPath toPath:toPath];
+        return self;
+    };
+}
 
 
 @end

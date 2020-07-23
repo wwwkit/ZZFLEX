@@ -21,8 +21,8 @@
 }
 
 - (void)initSubUI {
-    
-    WZVFLParseItem *item = [WZVFLParseItem ParseItemWithVisualFormar:@"H:|-10-[view1(view2)]-10-[view2(view3)]-10-[view3(view4)]-10-[view4]|" metrics:@{} views:@{
+    self.imageStr = @"https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1141259048,554497535&fm=26&gp=0.jpg";
+    WZVFLParseItem *item = [WZVFLParseItem ParseItemWithVisualFormar:@"H:|-10-[view1(view2)]-10-[view2(view3)]-10-[view3(view4)]-10-[view4]-10-|" metrics:@{} views:@{
         @"view1":@"1",
         @"view2":@"2",
         @"view3":@"3",
@@ -39,8 +39,12 @@
         view.addView(1).backgroundColor(UIColor.redColor);
         view.addView(2).backgroundColor(UIColor.redColor);
         view.addView(3).backgroundColor(UIColor.redColor);
-        view.addView(4).backgroundColor(UIColor.redColor);
+        view.addImageView(4).backgroundColor(UIColor.redColor).bindData(self, @"imageStr", @"image");
     }).vfl(item).backgroundColor(UIColor.whiteColor).vfl(item1);
+}
+
+- (void)dealloc {
+    
 }
 
 /*
