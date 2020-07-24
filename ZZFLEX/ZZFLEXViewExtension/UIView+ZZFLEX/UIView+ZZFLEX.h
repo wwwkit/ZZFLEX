@@ -22,6 +22,7 @@
 #import "ZZTableViewChainModel.h"
 #import "ZZCollectionViewChainModel.h"
 #import "WZObserver.h"
+#import "WZStackViewChainModel.h"
 
 #define     ZZFLEX_VIEW_CHAIN_TYPE              @property (nonatomic, copy, readonly)
 
@@ -62,6 +63,10 @@ ZZFLEX_VIEW_CHAIN_TYPE ZZTableViewChainModel *(^ addTableView)(NSInteger tag);
 /// 添加CollectionView
 ZZFLEX_VIEW_CHAIN_TYPE ZZCollectionViewChainModel *(^ addCollectionView)(NSInteger tag);
 
+/// 添加UIStackView
+ZZFLEX_VIEW_CHAIN_TYPE WZStackViewChainModel *(^ addStackView)(NSInteger tag);
+
+/// 为了更方便的添加子视图、添加子视图约束
 ZZFLEX_CHAIN_PROPERTY ZZViewChainModel * (^ addSubView)( void(^content)(__kindof UIView *view) );
 
 @end

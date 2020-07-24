@@ -13,7 +13,11 @@
 {   \
     return ^ZZChainModelClass* (NSInteger tag) {      \
         UIViewClass *view = UIViewClass.zz_create(tag).view;    \
-        [self addSubview:view];     \
+        if ([self isKindOfClass:UIStackView.class]) {   \
+            [(UIStackView *)self addArrangedSubview:view]; \
+        } else {    \
+            [self addSubview:view];     \
+        }   \
         ZZChainModelClass *chainModel = [[ZZChainModelClass alloc] initWithTag:tag andView:view]; \
         return chainModel;      \
     };      \
@@ -24,6 +28,7 @@
 ZZFLEX_VE_API(addView, ZZViewChainModel, UIView);
 ZZFLEX_VE_API(addLabel, ZZLabelChainModel, UILabel);
 ZZFLEX_VE_API(addImageView, ZZImageViewChainModel, UIImageView);
+ZZFLEX_VE_API(addStackView, WZStackViewChainModel, UIStackView);
 
 #pragma mark - # 按钮类
 ZZFLEX_VE_API(addControl, ZZControlChainModel, UIControl);
