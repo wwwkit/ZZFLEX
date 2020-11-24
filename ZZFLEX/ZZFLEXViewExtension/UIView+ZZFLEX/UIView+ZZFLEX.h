@@ -23,7 +23,7 @@
 #import "ZZCollectionViewChainModel.h"
 #import "WZObserver.h"
 #import "WZStackViewChainModel.h"
-
+#import "ZZSegmentedControlChainModel.h"
 #define     ZZFLEX_VIEW_CHAIN_TYPE              @property (nonatomic, copy, readonly)
 
 @interface UIView (ZZFLEX)
@@ -65,6 +65,9 @@ ZZFLEX_VIEW_CHAIN_TYPE ZZCollectionViewChainModel *(^ addCollectionView)(NSInteg
 
 /// 添加UIStackView
 ZZFLEX_VIEW_CHAIN_TYPE WZStackViewChainModel *(^ addStackView)(NSInteger tag);
+
+/// 添加UISegmentController
+ZZFLEX_VIEW_CHAIN_TYPE ZZSegmentedControlChainModel *(^ addSegmentedControl)(NSInteger tag, NSArray<NSString *> *items);
 
 /// 为了更方便的添加子视图、添加子视图约束
 ZZFLEX_CHAIN_PROPERTY ZZViewChainModel * (^ addSubView)( void(^content)(__kindof UIView *view) );

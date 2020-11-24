@@ -36,6 +36,18 @@ ZZFLEX_VE_API(addTextField, ZZTextFieldChainModel, UITextField);
 ZZFLEX_VE_API(addButton, ZZButtonChainModel, UIButton);
 ZZFLEX_VE_API(addSwitch, ZZSwitchChainModel, UISwitch);
 
+- (ZZSegmentedControlChainModel *(^)(NSInteger, NSArray *))addSegmentedControl {
+    return ^id (NSInteger tag, NSArray *items) {
+        UISegmentedControl *segment = [UISegmentedControl.alloc initWithItems:items];
+        if ([self isKindOfClass:UIStackView.class]) {
+            [(UIStackView *)self addArrangedSubview:segment];
+        } else {
+            [self addSubview:segment];
+        }
+        return [[ZZSegmentedControlChainModel alloc] initWithTag:tag andView:segment];
+    };
+}
+
 #pragma mark - # 滚动视图类
 ZZFLEX_VE_API(addScrollView, ZZScrollViewChainModel, UIScrollView);
 ZZFLEX_VE_API(addTextView, ZZTextViewChainModel, UITextView);

@@ -31,7 +31,7 @@
 }
 
 - (void)WZ_SetValue:(id)value forUndefinedKey:(NSString *)key {
-    NSAssert(![self respondsToSelector:@selector(WZ_SetValue:forUndefinedKey:)], @"当前 key 不存在");
+//    NSAssert(![self respondsToSelector:@selector(WZ_SetValue:forUndefinedKey:)], @"当前 key 不存在");
     if ([self respondsToSelector:@selector(WZ_SetValue:forUndefinedKey:)]) {
         [self WZ_SetValue:value forUndefinedKey:key];
     }

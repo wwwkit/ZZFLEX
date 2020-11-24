@@ -18,7 +18,7 @@
 #import "ZZFlexibleLayoutViewProtocol.h"
 #import "ZZFLEXCollectionViewController.h"
 #import "ZZFLEXTableViewController.h"
-
+#import <Masonry/Masonry.h>
 // 请求队列
 #import "ZZFLEXRequestQueue.h"
 

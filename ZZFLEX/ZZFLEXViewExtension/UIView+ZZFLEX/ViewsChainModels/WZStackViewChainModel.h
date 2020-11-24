@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class WZStackViewChainModel;
 API_AVAILABLE(ios(9.0))
-@interface WZStackViewChainModel : ZZBaseViewChainModel
+@interface WZStackViewChainModel : ZZBaseViewChainModel<WZStackViewChainModel *>
 ZZFLEX_CHAIN_PROPERTY WZStackViewChainModel *(^ axis)(UILayoutConstraintAxis axis);
 ZZFLEX_CHAIN_PROPERTY WZStackViewChainModel *(^ distribution)(UIStackViewDistribution distribution);
 ZZFLEX_CHAIN_PROPERTY WZStackViewChainModel *(^ alignment)(UIStackViewAlignment alignment);

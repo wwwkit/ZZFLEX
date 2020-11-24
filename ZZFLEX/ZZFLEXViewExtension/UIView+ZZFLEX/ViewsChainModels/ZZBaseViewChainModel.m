@@ -17,7 +17,7 @@
 #define     ZZFLEX_CHAIN_MASONRY_IMPLEMENTATION(methodName, masonryMethod) \
 - (id (^)( void (^constraints)(__kindof UIView *, MASConstraintMaker *)) )methodName    \
 {   \
-return ^id ( void (^constraints)(__kindof UIView *, MASConstraintMaker *) ) {  \
+return ^__kindof ZZBaseViewChainModel *( void (^constraints)(__kindof UIView *, MASConstraintMaker *) ) {  \
 if (self.view.superview) { \
 [self.view masonryMethod:^(MASConstraintMaker *make){   \
 constraints(self.view, make);   \
@@ -78,7 +78,7 @@ ZZFLEX_CHAIN_VIEW_IMPLEMENTATION(right, CGFloat);
 
 
 #pragma mark - # Layout
-#if __has_include(<Masonry.h>) || __has_include("Masonry.h")
+#if __has_include(<Masonry/Masonry.h>) || __has_include("Masonry.h")
 ZZFLEX_CHAIN_MASONRY_IMPLEMENTATION(masonry, mas_makeConstraints);
 ZZFLEX_CHAIN_MASONRY_IMPLEMENTATION(updateMasonry, mas_updateConstraints);
 ZZFLEX_CHAIN_MASONRY_IMPLEMENTATION(remakeMasonry, mas_remakeConstraints);
@@ -150,12 +150,13 @@ ZZFLEX_CHAIN_LAYER_IMPLEMENTATION(shadowRadius, CGFloat);
 ZZFLEX_CHAIN_LAYER_IMPLEMENTATION(transform, CATransform3D);
 
 
-- (__kindof ZZBaseViewChainModel * (^)( void (^content)(__kindof UIView *)) )addSubView {
-    return ^__kindof ZZBaseViewChainModel *( void (^content)(__kindof UIView *) ) {
+- (id (^)(void (^content)(id sender)))addSubView {
+    return ^__kindof ZZBaseViewChainModel *(void (^content)(id sender)) {
         content(self.view);
         return self;
     };
 }
+
 
 ZZFLEX_CHAIN_VIEW_IMPLEMENTATION(vfl, WZVFLParseItem *);
 
