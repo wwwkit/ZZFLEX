@@ -45,23 +45,19 @@ ZZFLEX_CHAIN_SegmentedControl_IMPLEMENTATION(selectedSegmentIndex, int);
     };
 }
 
-//- (ZZSegmentedControlChainModel * _Nonnull (^)(UIAction * _Nonnull, NSInteger))setAction {
-//    return ^id (UIAction * _Nonnull action, NSInteger index) {
-//        if (@available(iOS 14.0, *)) {
-//            [(UISegmentedControl *)self.view setAction:action forSegmentAtIndex:index];
-//        }
-//        return self;
-//    };
-//}
-//
-//- (ZZSegmentedControlChainModel * _Nonnull (^)(UIAction * _Nonnull, NSInteger, BOOL))insertAction {
-//    return ^id (UIAction * _Nonnull action, NSInteger index, BOOL animated) {
-//        if (@available(iOS 14.0, *)) {
-//            [(UISegmentedControl *)self.view insertSegmentWithAction:action atIndex:index animated:animated];
-//        }
-//        return self;
-//    };
-//}
+- (ZZSegmentedControlChainModel * _Nonnull (^)(UIAction * _Nonnull, NSInteger))setAction API_AVAILABLE(ios(14.0)) {
+    return ^id (UIAction * _Nonnull action, NSInteger index) {
+        [(UISegmentedControl *)self.view setAction:action forSegmentAtIndex:index];
+        return self;
+    };
+}
+
+- (ZZSegmentedControlChainModel * _Nonnull (^)(UIAction * _Nonnull, NSInteger, BOOL))insertAction API_AVAILABLE(ios(14.0)) {
+    return ^id (UIAction * _Nonnull action, NSInteger index, BOOL animated) {
+        [(UISegmentedControl *)self.view insertSegmentWithAction:action atIndex:index animated:animated];
+        return self;
+    };
+}
 
 
 - (ZZSegmentedControlChainModel * _Nonnull (^)(CGFloat, NSInteger))setWidth {

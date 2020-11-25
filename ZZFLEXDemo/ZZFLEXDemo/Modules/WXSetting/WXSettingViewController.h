@@ -6,9 +6,9 @@
 //  Copyright © 2019 李伯坤. All rights reserved.
 //
 
-#import "ZZFLEXCollectionViewController.h"
+#import "ZZFlexibleLayoutViewController.h"
 
-@interface WXSettingViewController : ZZFLEXCollectionViewController
+@interface WXSettingViewController : ZZFlexibleLayoutViewController
 
 @end
 

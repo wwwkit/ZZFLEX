@@ -16,13 +16,12 @@
 #import "ZZFLEXViewExtension.h"
 #import "ZZFLEXAngel.h"
 #import "ZZFlexibleLayoutViewProtocol.h"
-#import "ZZFLEXCollectionViewController.h"
-#import "ZZFLEXTableViewController.h"
-#import <Masonry/Masonry.h>
+#import "ZZFlexibleLayoutViewController.h"
+
 // 请求队列
 #import "ZZFLEXRequestQueue.h"
 
 // 不再建议使用
-#import "ZZFLEXCollectionViewController+EditExtension.h"
+#import "ZZFlexibleLayoutViewController+EditExtension.h"
 
 #endif /* ZZFLEX_h */

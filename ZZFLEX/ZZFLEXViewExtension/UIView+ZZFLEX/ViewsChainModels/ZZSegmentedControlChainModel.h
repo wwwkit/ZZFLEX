@@ -22,8 +22,8 @@ ZZFLEX_CHAIN_PROPERTY ZZSegmentedControlChainModel *(^ insertImage)(UIImage *ima
 ZZFLEX_CHAIN_PROPERTY ZZSegmentedControlChainModel *(^ setTitle)(NSString *title, NSInteger AtIndex);
 ZZFLEX_CHAIN_PROPERTY ZZSegmentedControlChainModel *(^ insertTitle)(NSString *title, NSInteger AtIndex, BOOL animated);
 
-//ZZFLEX_CHAIN_PROPERTY ZZSegmentedControlChainModel *(^ setAction)(UIAction *action, NSInteger AtIndex);
-//ZZFLEX_CHAIN_PROPERTY ZZSegmentedControlChainModel *(^ insertAction)(UIAction *action, NSInteger AtIndex, BOOL animated);
+ZZFLEX_CHAIN_PROPERTY ZZSegmentedControlChainModel *(^ setAction)(UIAction *action, NSInteger AtIndex) API_AVAILABLE(ios(14.0));
+ZZFLEX_CHAIN_PROPERTY ZZSegmentedControlChainModel *(^ insertAction)(UIAction *action, NSInteger AtIndex, BOOL animated) API_AVAILABLE(ios(14.0));
 
 ZZFLEX_CHAIN_PROPERTY ZZSegmentedControlChainModel *(^ setWidth)(CGFloat width, NSInteger AtIndex);
 ZZFLEX_CHAIN_PROPERTY ZZSegmentedControlChainModel *(^ setContentOffset)(CGSize offset, NSInteger AtIndex);

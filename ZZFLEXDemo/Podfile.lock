@@ -93,7 +93,7 @@ PODS:
   - TLKit/TLShortcut (0.0.28)
   - "XLPhotoBrowser+CoderXL (1.2.0)":
     - SDWebImage
-  - ZZFLEX (1.1):
+  - ZZFLEX (1.1.1):
     - Masonry
 
 DEPENDENCIES:
@@ -135,7 +135,7 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TLKit: 29fdba0f2adff5ce34cedadff3e71eb44a1ff925
   "XLPhotoBrowser+CoderXL": 48f73020942c73ba3c3f44c46f7f2add86a98d00
-  ZZFLEX: 46a7bf6feb0130a2ce265ac72c83991d871cfaee
+  ZZFLEX: 83b2b1362cc3f7254541b66207f483bcf3640b42
 
 PODFILE CHECKSUM: 2ae4f726740aadbb69ebe8eb9a35bb7b85651240
 

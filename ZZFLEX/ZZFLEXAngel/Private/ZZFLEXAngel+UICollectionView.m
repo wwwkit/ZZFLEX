@@ -7,9 +7,9 @@
 //
 
 #import "ZZFLEXAngel+UICollectionView.h"
-#import "ZZFLEXViewModel+Angel.h"
+#import "ZZFlexibleLayoutViewModel+UICollectionView.h"
 #import "ZZFLEXAngel+Private.h"
-#import "ZZFLEXSectionModel.h"
+#import "ZZFlexibleLayoutSectionModel.h"
 #import "ZZFlexibleLayoutSeperatorCell.h"
 #import "ZZFLEXMacros.h"
 
@@ -23,40 +23,25 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    ZZFLEXSectionModel *sectionModel = [self sectionModelAtIndex:section];
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:section];
     return [sectionModel count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZZFLEXSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
-    ZZFLEXViewModel *viewModel = [sectionModel objectAtIndex:indexPath.row];
-
-    // 创建\获取cell
-    UICollectionViewCell<ZZFlexibleLayoutViewProtocol> *cell;
-    if (!viewModel || !viewModel.viewClass) {
-        ZZFLEXLog(@"!!!!! CollectionViewCell不存在，将使用空白Cell：%@", viewModel.className);
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ZZFlexibleLayoutSeperatorCell" forIndexPath:indexPath];
-        [cell setTag:viewModel.viewTag];
-        return cell;
-    }
-    cell = [collectionView dequeueReusableCellWithReuseIdentifier:viewModel.className forIndexPath:indexPath];
-    
-    // 配置cell
-    [viewModel excuteConfigActionForHostView:collectionView itemView:cell sectionCount:sectionModel.count indexPath:indexPath];
-    
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
+    ZZFlexibleLayoutViewModel *viewModel = [sectionModel objectAtIndex:indexPath.row];
+    UICollectionViewCell *cell = [viewModel collectionViewCellForPageControler:self collectionView:collectionView sectionCount:sectionModel.count indexPath:indexPath];
     return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView<ZZFlexibleLayoutViewProtocol> *view = nil;
-    ZZFLEXSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
-    ZZFLEXViewModel *viewModel = [kind isEqual:UICollectionElementKindSectionHeader] ? sectionModel.headerViewModel : sectionModel.footerViewModel;
+    UICollectionReusableView *view = nil;
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
+    ZZFlexibleLayoutViewModel *viewModel = [kind isEqual:UICollectionElementKindSectionHeader] ? sectionModel.headerViewModel : sectionModel.footerViewModel;
     if (viewModel) {
-        view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:viewModel.className forIndexPath:indexPath];
-        [viewModel excuteConfigActionForHostView:collectionView itemView:view sectionCount:indexPath.section indexPath:indexPath];
-        return view;
+        view = [viewModel collectionViewHeaderFooterViewForPageControler:self collectionView:collectionView kind:kind indexPath:indexPath];
     }
     else {
         view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"ZZFlexibleLayoutEmptyHeaderFooterView" forIndexPath:indexPath];
@@ -69,56 +54,57 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    ZZFLEXViewModel *viewModel = [self viewModelAtIndexPath:indexPath];
+    ZZFlexibleLayoutViewModel *viewModel = [self viewModelAtIndexPath:indexPath];
     [viewModel excuteSelectedActionForHostView:collectionView];
 }
 
 //MARK: ZZFlexibleLayoutFlowLayoutDelegate
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZZFLEXViewModel *viewModel = [self viewModelAtIndexPath:indexPath];
-    CGSize size = [viewModel visableSizeForHostView:collectionView];
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:indexPath.section];
+    ZZFlexibleLayoutViewModel *viewModel = [self viewModelAtIndexPath:indexPath];
+    CGSize size = [viewModel visableSizeForHostView:collectionView sectionEdge:sectionModel.sectionInsets];
     return size;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    ZZFLEXSectionModel *sectionModel = [self sectionModelAtIndex:section];
-    ZZFLEXViewModel *viewModel = sectionModel.headerViewModel;
-    CGSize size = [viewModel visableSizeForHostView:collectionView];
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:section];
+    ZZFlexibleLayoutViewModel *viewModel = sectionModel.headerViewModel;
+    CGSize size = [viewModel visableSizeForHostView:collectionView sectionEdge:sectionModel.sectionInsets];
     return size;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
-    ZZFLEXSectionModel *sectionModel = [self sectionModelAtIndex:section];
-    ZZFLEXViewModel *viewModel = sectionModel.footerViewModel;
-    CGSize size = [viewModel visableSizeForHostView:collectionView];
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:section];
+    ZZFlexibleLayoutViewModel *viewModel = sectionModel.footerViewModel;
+    CGSize size = [viewModel visableSizeForHostView:collectionView sectionEdge:sectionModel.sectionInsets];
     return size;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    ZZFLEXSectionModel *sectionModel = [self sectionModelAtIndex:section];
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:section];
     return sectionModel.minimumLineSpacing;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    ZZFLEXSectionModel *sectionModel = [self sectionModelAtIndex:section];
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:section];
     return sectionModel.minimumInteritemSpacing;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    ZZFLEXSectionModel *sectionModel = [self sectionModelAtIndex:section];
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:section];
     return sectionModel.sectionInsets;
 }
 
 #pragma mark - # ZZFlexibleLayoutFlowLayout
 - (UIColor *)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout colorForSectionAtIndex:(NSInteger)section
 {
-    ZZFLEXSectionModel *sectionModel = [self sectionModelAtIndex:section];
+    ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelAtIndex:section];
     return sectionModel.backgroundColor ? sectionModel.backgroundColor : collectionView.backgroundColor;
 }
 

@@ -7,15 +7,14 @@
 //
 
 #import "ZZFLEXAngel.h"
-
+#import "ZZFlexibleLayoutSectionModel.h"
+#import "ZZFlexibleLayoutViewModel.h"
 @interface ZZFLEXAngel (Private)
 
-- (ZZFLEXSectionModel *)sectionModelAtIndex:(NSInteger)section;
+- (ZZFlexibleLayoutSectionModel *)sectionModelAtIndex:(NSInteger)section;
 
-- (ZZFLEXSectionModel *)sectionModelForTag:(NSInteger)sectionTag;
+- (ZZFlexibleLayoutSectionModel *)sectionModelForTag:(NSInteger)sectionTag;
 
-- (ZZFLEXViewModel *)viewModelAtIndexPath:(NSIndexPath *)indexPath;
-
-- (NSArray<ZZFLEXViewModel *> *)viewModelsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths;
+- (ZZFlexibleLayoutViewModel *)viewModelAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

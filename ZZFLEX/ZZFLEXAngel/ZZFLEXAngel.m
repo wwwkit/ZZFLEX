@@ -14,7 +14,7 @@
 #import "ZZFLEXTableViewEmptyCell.h"
 #import "ZZFlexibleLayoutEmptyHeaderFooterView.h"
 #import "ZZFLEXMacros.h"
-#import "ZZFLEXSectionModel.h"
+#import "ZZFlexibleLayoutSectionModel.h"
 
 /*
  *  注册Cell 到 hostView
@@ -137,7 +137,7 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 - (BOOL (^)(void))clearAllItems
 {
     return ^(void) {
-        for (ZZFLEXSectionModel *sectionModel in self.data) {
+        for (ZZFlexibleLayoutSectionModel *sectionModel in self.data) {
             sectionModel.headerViewModel = nil;
             [sectionModel.itemsArray removeAllObjects];
             sectionModel.footerViewModel = nil;
@@ -149,7 +149,7 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 - (BOOL (^)(void))clearAllCells
 {
     return ^(void) {
-        for (ZZFLEXSectionModel *sectionModel in self.data) {
+        for (ZZFlexibleLayoutSectionModel *sectionModel in self.data) {
             [sectionModel.itemsArray removeAllObjects];
         }
         return YES;
@@ -160,10 +160,10 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 - (BOOL (^)(void))upadte
 {
     return ^(void) {
-        for (ZZFLEXSectionModel *sectionModel in self.data) {
+        for (ZZFlexibleLayoutSectionModel *sectionModel in self.data) {
             [sectionModel.headerViewModel updateViewSize];
             [sectionModel.footerViewModel updateViewSize];
-            for (ZZFLEXViewModel *viewModel in sectionModel.itemsArray) {
+            for (ZZFlexibleLayoutViewModel *viewModel in sectionModel.itemsArray) {
                 [viewModel updateViewSize];
             }
         }
@@ -174,9 +174,9 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 - (BOOL (^)(void))upadteAllItems
 {
     return ^(void) {
-        for (ZZFLEXSectionModel *sectionModel in self.data) {
+        for (ZZFlexibleLayoutSectionModel *sectionModel in self.data) {
             [sectionModel.headerViewModel updateViewSize];
-            for (ZZFLEXViewModel *viewModel in sectionModel.itemsArray) {
+            for (ZZFlexibleLayoutViewModel *viewModel in sectionModel.itemsArray) {
                 [viewModel updateViewSize];
             }
             [sectionModel.footerViewModel updateViewSize];
@@ -189,8 +189,8 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 - (BOOL (^)(void))upadteAllCells
 {
     return ^(void) {
-        for (ZZFLEXSectionModel *sectionModel in self.data) {
-            for (ZZFLEXViewModel *viewModel in sectionModel.itemsArray) {
+        for (ZZFlexibleLayoutSectionModel *sectionModel in self.data) {
+            for (ZZFlexibleLayoutViewModel *viewModel in sectionModel.itemsArray) {
                 [viewModel updateViewSize];
             }
         }
@@ -201,7 +201,7 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 - (BOOL (^)(void))isEmpty
 {
     return ^(void) {
-        for (ZZFLEXSectionModel *sectionModel in self.data) {
+        for (ZZFlexibleLayoutSectionModel *sectionModel in self.data) {
             if(sectionModel.itemsArray.count > 0) {
                 return NO;
             }
@@ -219,7 +219,7 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
             ZZFLEXLog(@"!!!!! 重复添加Section：%ld", (long)tag);
         }
         
-        ZZFLEXSectionModel *sectionModel = [[ZZFLEXSectionModel alloc] init];
+        ZZFlexibleLayoutSectionModel *sectionModel = [[ZZFlexibleLayoutSectionModel alloc] init];
         sectionModel.sectionTag = tag;
         
         [self.data addObject:sectionModel];
@@ -235,7 +235,7 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
             ZZFLEXLog(@"!!!!! 重复添加Section：%ld", (long)tag);
         }
         
-        ZZFLEXSectionModel *sectionModel = [[ZZFLEXSectionModel alloc] init];
+        ZZFlexibleLayoutSectionModel *sectionModel = [[ZZFlexibleLayoutSectionModel alloc] init];
         sectionModel.sectionTag = tag;
         
         ZZFLEXAngelSectionInsertChainModel *chainSectionModel = [[ZZFLEXAngelSectionInsertChainModel alloc] initWithSectionModel:sectionModel listData:self.data];
@@ -247,7 +247,7 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 - (ZZFLEXAngelSectionEditChainModel *(^)(NSInteger tag))sectionForTag
 {
     return ^(NSInteger tag){
-        ZZFLEXSectionModel *sectionModel = nil;
+        ZZFlexibleLayoutSectionModel *sectionModel = nil;
         for (sectionModel in self.data) {
             if (sectionModel.sectionTag == tag) {
                 ZZFLEXAngelSectionEditChainModel *chainSectionModel = [[ZZFLEXAngelSectionEditChainModel alloc] initWithSectionModel:sectionModel];
@@ -262,7 +262,7 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 - (BOOL (^)(NSInteger tag))deleteSection
 {
     return ^(NSInteger tag) {
-        ZZFLEXSectionModel *sectionModel = [self sectionModelForTag:tag];
+        ZZFlexibleLayoutSectionModel *sectionModel = [self sectionModelForTag:tag];
         if (sectionModel) {
             [self.data removeObject:sectionModel];
             return YES;
@@ -296,10 +296,10 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 }
 - (ZZFLEXAngelViewChainModel *)_setHeaderWithViewClass:(Class)viewClass xib:(BOOL)xib
 {
-    ZZFLEXViewModel *viewModel;
+    ZZFlexibleLayoutViewModel *viewModel;
     if (viewClass) {
         xib ? RegisterHostViewXibReusableView(self.hostView, UICollectionElementKindSectionHeader, viewClass) : RegisterHostViewReusableView(self.hostView, UICollectionElementKindSectionHeader, viewClass);
-        viewModel = [[ZZFLEXViewModel alloc] initWithViewClass:viewClass];
+        viewModel = [[ZZFlexibleLayoutViewModel alloc] initWithViewClass:viewClass];
     }
     ZZFLEXAngelViewChainModel *chainViewModel = [[ZZFLEXAngelViewChainModel alloc] initWithListData:self.data viewModel:viewModel andType:ZZFLEXAngelViewTypeHeader];
     return chainViewModel;
@@ -320,10 +320,10 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 }
 - (ZZFLEXAngelViewChainModel *)_setFotterWithViewClass:(Class)viewClass xib:(BOOL)xib
 {
-    ZZFLEXViewModel *viewModel;
+    ZZFlexibleLayoutViewModel *viewModel;
     if (viewClass) {
         xib ? RegisterHostViewXibReusableView(self.hostView, UICollectionElementKindSectionFooter, viewClass) : RegisterHostViewReusableView(self.hostView, UICollectionElementKindSectionFooter, viewClass);
-        viewModel = [[ZZFLEXViewModel alloc] initWithViewClass:viewClass];
+        viewModel = [[ZZFlexibleLayoutViewModel alloc] initWithViewClass:viewClass];
     }
     ZZFLEXAngelViewChainModel *chainViewModel = [[ZZFLEXAngelViewChainModel alloc] initWithListData:self.data viewModel:viewModel andType:ZZFLEXAngelViewTypeFooter];
     return chainViewModel;
@@ -347,7 +347,7 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 - (ZZFLEXAngelViewChainModel *)_addCellWithViewClass:(Class)viewClass xib:(BOOL)xib
 {
     xib ? RegisterHostViewXibCell(self.hostView, viewClass) : RegisterHostViewCell(self.hostView, viewClass);
-    ZZFLEXViewModel *viewModel = [[ZZFLEXViewModel alloc] initWithViewClass:viewClass];
+    ZZFlexibleLayoutViewModel *viewModel = [[ZZFlexibleLayoutViewModel alloc] initWithViewClass:viewClass];
     ZZFLEXAngelViewChainModel *chainViewModel = [[ZZFLEXAngelViewChainModel alloc] initWithListData:self.data viewModel:viewModel andType:ZZFLEXAngelViewTypeCell];
     return chainViewModel;
 }
@@ -379,7 +379,7 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
     return ^(CGSize size, UIColor *color) {
         Class viewClass = [self.hostView isKindOfClass:[UITableView class]] ? [ZZFLEXTableViewEmptyCell class] : [ZZFlexibleLayoutSeperatorCell class];
         ZZFlexibleLayoutSeperatorModel *dataModel = [[ZZFlexibleLayoutSeperatorModel alloc] initWithSize:size andColor:color];
-        ZZFLEXViewModel *viewModel = [[ZZFLEXViewModel alloc] initWithViewClass:viewClass andDataModel:dataModel];
+        ZZFlexibleLayoutViewModel *viewModel = [[ZZFlexibleLayoutViewModel alloc] initWithViewClass:viewClass andDataModel:dataModel];
         ZZFLEXAngelViewChainModel *chainViewModel = [[ZZFLEXAngelViewChainModel alloc] initWithListData:self.data viewModel:viewModel andType:ZZFLEXAngelViewTypeCell];
         return chainViewModel;
     };
@@ -402,7 +402,7 @@ void RegisterHostViewXibReusableView(__kindof UIScrollView *hostView, NSString *
 - (ZZFLEXAngelViewInsertChainModel *)_insertCellWithViewClass:(Class)viewClass xib:(BOOL)xib
 {
     xib ? RegisterHostViewXibCell(self.hostView, viewClass) : RegisterHostViewCell(self.hostView, viewClass);
-    ZZFLEXViewModel *viewModel = [[ZZFLEXViewModel alloc] initWithViewClass:viewClass];
+    ZZFlexibleLayoutViewModel *viewModel = [[ZZFlexibleLayoutViewModel alloc] initWithViewClass:viewClass];
     ZZFLEXAngelViewInsertChainModel *chainViewModel = [[ZZFLEXAngelViewInsertChainModel alloc] initWithListData:self.data viewModel:viewModel andType:ZZFLEXAngelViewTypeCell];
     return chainViewModel;
 }

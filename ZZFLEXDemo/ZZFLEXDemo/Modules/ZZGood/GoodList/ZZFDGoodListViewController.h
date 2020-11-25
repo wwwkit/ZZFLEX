@@ -6,8 +6,8 @@
 //  Copyright © 2017年 李伯坤. All rights reserved.
 //
 
-#import "ZZFLEXCollectionViewController.h"
+#import "ZZFlexibleLayoutViewController.h"
 
-@interface ZZFDGoodListViewController : ZZFLEXCollectionViewController
+@interface ZZFDGoodListViewController : ZZFlexibleLayoutViewController
 
 @end
