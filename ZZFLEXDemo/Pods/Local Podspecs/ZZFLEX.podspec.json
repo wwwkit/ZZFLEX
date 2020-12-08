@@ -18,11 +18,21 @@
     "git": "https://github.com/tbl00c/ZZFLEX.git",
     "tag": "1.1.1"
   },
-  "dependencies": {
-    "Masonry": [
+  "default_subspecs": "ZZFLEX",
+  "subspecs": [
+    {
+      "name": "ZZFLEX",
+      "requires_arc": true,
+      "source_files": "ZZFLEX/**/*.{h,m,mm}",
+      "dependencies": {
+        "Masonry": [
 
-    ]
-  },
-  "requires_arc": true,
-  "source_files": "ZZFLEX/**/*.{h,m,mm}"
+        ]
+      }
+    },
+    {
+      "name": "DataBindKit",
+      "source_files": "DataBindKit/**/*.{h,m,mm}"
+    }
+  ]
 }

@@ -1,13 +1,13 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 inhibit_all_warnings!
 
 target 'ZZFLEXDemo' do
-pod 'ZZFLEX', :path => '../'
-
-pod 'TLKit', :git => 'https://github.com/tbl00c/TLKit.git'
-
-pod 'Masonry', '~> 1.1.0'
-pod 'MJRefresh', '~> 3.1.15'
-pod 'XLPhotoBrowser+CoderXL', :git => 'https://github.com/tbl00c/XLPhotoBrowser.git', :tag => '1.2.1'
-pod 'SDWebImage'
+  pod 'ZZFLEX', :path => '../'
+  pod 'ZZFLEX/DataBindKit', :path => '../'
+  
+  pod 'TLKit', :git => 'https://github.com/tbl00c/TLKit.git'
+  pod 'Masonry', '~> 1.1.0'
+  pod 'MJRefresh', '~> 3.1.15'
+  pod 'XLPhotoBrowser+CoderXL', :git => 'https://github.com/tbl00c/XLPhotoBrowser.git', :tag => '1.2.1'
+  pod 'SDWebImage'
 end

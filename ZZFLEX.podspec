@@ -16,9 +16,16 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/tbl00c/ZZFLEX"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.source       = { :git => "https://github.com/tbl00c/ZZFLEX.git", :tag => s.version }
-  s.dependency 'Masonry'
+  s.default_subspec = 'ZZFLEX'
 
-  s.requires_arc = true
-  s.source_files = "ZZFLEX/**/*.{h,m,mm}"
+  s.subspec 'ZZFLEX' do |ss| 
+    ss.requires_arc = true
+    ss.source_files = "ZZFLEX/**/*.{h,m,mm}"  
+    ss.dependency 'Masonry'
+  end
+
+  s.subspec 'DataBindKit' do |ss| 
+    ss.source_files = "DataBindKit/**/*.{h,m,mm}"
+  end
 
 end

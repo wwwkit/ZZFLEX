@@ -94,6 +94,9 @@ PODS:
   - "XLPhotoBrowser+CoderXL (1.2.0)":
     - SDWebImage
   - ZZFLEX (1.1.1):
+    - ZZFLEX/ZZFLEX (= 1.1.1)
+  - ZZFLEX/DataBindKit (1.1.1)
+  - ZZFLEX/ZZFLEX (1.1.1):
     - Masonry
 
 DEPENDENCIES:
@@ -103,6 +106,7 @@ DEPENDENCIES:
   - TLKit (from `https://github.com/tbl00c/TLKit.git`)
   - "XLPhotoBrowser+CoderXL (from `https://github.com/tbl00c/XLPhotoBrowser.git`, tag `1.2.1`)"
   - ZZFLEX (from `../`)
+  - ZZFLEX/DataBindKit (from `../`)
 
 SPEC REPOS:
   trunk:
@@ -135,8 +139,8 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TLKit: 29fdba0f2adff5ce34cedadff3e71eb44a1ff925
   "XLPhotoBrowser+CoderXL": 48f73020942c73ba3c3f44c46f7f2add86a98d00
-  ZZFLEX: 83b2b1362cc3f7254541b66207f483bcf3640b42
+  ZZFLEX: f93c68dd882568748978c6b48bbb98c9c1310c5b
 
-PODFILE CHECKSUM: 2ae4f726740aadbb69ebe8eb9a35bb7b85651240
+PODFILE CHECKSUM: 6c3c7dd6a71e6d86733db62c268ae89b75ddb7c7
 
 COCOAPODS: 1.9.3
