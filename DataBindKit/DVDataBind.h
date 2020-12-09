@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - <-------------------- Typedef -------------------->
 @class DVDataBind;
-typedef void(^DBVoidAnyBlock)(void);
-typedef BOOL(^DBBoolAnyBlock)(void);
-typedef id _Nullable (^DBAnyAnyBlock)(void);
+typedef void(^DBVoidAnyBlock)();
+typedef BOOL(^DBBoolAnyBlock)();
+typedef id _Nullable (^DBAnyAnyBlock)();
 
 typedef DVDataBind *_Nonnull(^DataBindBlock)(id target, NSString *property);
 typedef DVDataBind *_Nonnull(^DataBindUIBlock)(id target, NSString *property, UIControlEvents controlEvent);
