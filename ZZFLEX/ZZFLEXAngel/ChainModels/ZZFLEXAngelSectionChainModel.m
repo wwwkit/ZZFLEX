@@ -59,6 +59,20 @@
     };
 }
 
+- (id (^)(BOOL))editing {
+    return ^(BOOL editing) {
+        [self.sectionModel setEditing:editing];
+        return self;
+    };
+}
+
+- (id (^)(UITableViewCellEditingStyle))editingType {
+    return ^(UITableViewCellEditingStyle editingType) {
+        [self.sectionModel setEditingType:editingType];
+        return self;
+    };
+}
+
 @end
 
 #pragma mark - ## ZZFLEXAngelSectionChainModel （添加）

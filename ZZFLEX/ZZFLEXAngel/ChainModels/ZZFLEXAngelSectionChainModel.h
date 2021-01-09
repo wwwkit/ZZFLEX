@@ -25,7 +25,10 @@
 - (ZZFLEXReturnType (^)(UIEdgeInsets sectionInsets))sectionInsets;
 /// backgrounColor
 - (ZZFLEXReturnType (^)(UIColor *backgrounColor))backgrounColor;
-
+/// 是否编辑
+- (ZZFLEXReturnType (^)(BOOL editing))editing;
+/// 编辑状态
+- (ZZFLEXReturnType (^)(UITableViewCellEditingStyle editingType))editingType;
 /// 初始化，框架内部使用
 - (instancetype)initWithSectionModel:(ZZFlexibleLayoutSectionModel *)sectionModel;
 

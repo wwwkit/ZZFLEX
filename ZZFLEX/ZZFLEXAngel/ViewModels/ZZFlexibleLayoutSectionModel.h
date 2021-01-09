@@ -42,6 +42,10 @@
 @property (nonatomic, assign) CGFloat minimumInteritemSpacing;
 /// section边缘间隔，默认UIEdgeInsetsZero
 @property (nonatomic, assign) UIEdgeInsets sectionInsets;
+/// 是否编辑
+@property (nonatomic, assign) BOOL editing;
+/// 编辑状态
+@property (nonatomic, assign) UITableViewCellEditingStyle editingType;
 
 #pragma mark - # Items
 /// section元素Model数组
